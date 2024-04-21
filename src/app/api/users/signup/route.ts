@@ -1,6 +1,5 @@
 import { connect } from "@/dbConfig/dbConfig";
 import User from "@/models/usermodel";
-import { error } from "console";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from 'bcryptjs'
 import { sendEmail } from "@/helpers/mailer";
@@ -27,8 +26,6 @@ export async function POST(request:NextRequest) {
    const savedUser=await newUser.save()
    console.log(savedUser);
    //send verification email
-
-   let message=`Dear ${username},\n\nPlease verify your account by clicking on the`
    await sendEmail({email,emailType:"VERIFY",userId:savedUser._id})
 
    return NextResponse.json({
