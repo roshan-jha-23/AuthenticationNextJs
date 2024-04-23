@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 export default function ProfilePage() {
   const router = useRouter();
-  const [data, setData] = useState("nothing");
+  const [data, setData] = useState("Nothing To Display Here");
   const logout = async () => {
     try {
       await axios.get("/api/users/logout");
